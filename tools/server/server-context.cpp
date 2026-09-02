@@ -64,7 +64,7 @@ static void server_prompt_cache_key_add_file(
 
     ec.clear();
     const auto modified = std::filesystem::last_write_time(path, ec);
-    key << "|mtime=" << (ec ? 0 : modified.time_since_epoch().count()) << "\n";
+    key << "|mtime=" << (ec ? 0 : (long long) modified.time_since_epoch().count()) << "\n";
 }
 
 static std::string server_prompt_cache_key(
